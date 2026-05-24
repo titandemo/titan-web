@@ -14,3 +14,81 @@
 .offcanvas-bottom.custom-height {
   height: 250px;
 }
+
+
+.marquee {
+  display: flex;
+  overflow: hidden;
+  padding: 2vw 0;
+}
+
+.sine-scroller {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-around;
+  animation: scroll 20s linear infinite;
+}
+
+.pf {
+  display: block;
+  width: calc(54 * 3vw / 71);
+  height: 3vw;
+  background: url('../img/font.png') no-repeat;
+  background-size: calc(1414 * 3vw / 71) 3vw;
+  animation: sine 2700ms ease-in-out infinite;
+}
+
+.space {
+  display: block;
+  width: calc(54 * 3vw / 71);
+  height: 3vw;
+  background: none;
+}
+
+.pf-a { background-position: calc(0 * -54 * 3vw / 71) 0; }
+.pf-b { background-position: calc(1 * -54 * 3vw / 71) 0; }
+.pf-c { background-position: calc(2 * -54 * 3vw / 71) 0; }
+.pf-d { background-position: calc(3 * -54 * 3vw / 71) 0; }
+.pf-e { background-position: calc(4 * -54 * 3vw / 71) 0; }
+.pf-f { background-position: calc(5 * -54 * 3vw / 71) 0; }
+.pf-g { background-position: calc(6 * -54 * 3vw / 71) 0; }
+.pf-h { background-position: calc(7 * -54 * 3vw / 71) 0; }
+.pf-i { background-position: calc(8 * -54 * 3vw / 71) 0; }
+.pf-j { background-position: calc(9 * -54 * 3vw / 71) 0; }
+.pf-k { background-position: calc(10 * -54 * 3vw / 71) 0; }
+.pf-l { background-position: calc(11 * -54 * 3vw / 71) 0; }
+.pf-m { background-position: calc(12 * -54 * 3vw / 71) 0; }
+.pf-n { background-position: calc(13 * -54 * 3vw / 71) 0; }
+.pf-o { background-position: calc(14 * -54 * 3vw / 71) 0; }
+.pf-p { background-position: calc(15 * -54 * 3vw / 71) 0; }
+.pf-q { background-position: calc(16 * -54 * 3vw / 71) 0; }
+.pf-r { background-position: calc(17 * -54 * 3vw / 71) 0; }
+.pf-s { background-position: calc(18 * -54 * 3vw / 71) 0; }
+.pf-t { background-position: calc(19 * -54 * 3vw / 71) 0; }
+.pf-u { background-position: calc(20 * -54 * 3vw / 71) 0; }
+.pf-v { background-position: calc(21 * -54 * 3vw / 71) 0; }
+.pf-w { background-position: calc(22 * -54 * 3vw / 71) 0; }
+.pf-x { background-position: calc(23 * -54 * 3vw / 71) 0; }
+.pf-y { background-position: calc(24 * -54 * 3vw / 71) 0; }
+.pf-z { background-position: calc(25 * -54 * 3vw / 71) 0; }
+
+.sine-scroller span:nth-child(8n + 1) { animation-delay: 0; }
+.sine-scroller span:nth-child(8n + 2) { animation-delay: -300ms; }
+.sine-scroller span:nth-child(8n + 3) { animation-delay: -600ms; }
+.sine-scroller span:nth-child(8n + 4) { animation-delay: -900ms; }
+.sine-scroller span:nth-child(8n + 5) { animation-delay: -1200ms; }
+.sine-scroller span:nth-child(8n + 6) { animation-delay: -1500ms; }
+.sine-scroller span:nth-child(8n + 7) { animation-delay: -1800ms; }
+.sine-scroller span:nth-child(8n + 8) { animation-delay: -2100ms; }
+.sine-scroller span:nth-child(8n + 0) { animation-delay: -2400ms; }
+
+@keyframes sine {
+  0%   { translate: 0 -1.5vw; }
+  50%  { translate: 0 1.5vw; }
+  100% { translate: 0 -1.5vw; }
+}
+
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-100%); }
+}

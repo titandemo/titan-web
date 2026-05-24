@@ -62,29 +62,33 @@
 
     <div class="text-white bg-dark py-3 fixed-bottom fixed-bottom-shift">
       <div class="container">
-        <div class="d-flex align-items-center gap-3">
-          <div class="hstack">
-            <button class="btn btn-link">
-              <i class="bi bi-skip-backward-fill"></i>
-            </button>
-            <button class="btn btn-link">
-              <i class="bi bi-play-fill"></i>
-            </button>
-            <button class="btn btn-link">
-              <i class="bi bi-skip-forward-fill"></i>
-            </button>
+        <div class="d-flex align-items-center">
+          <div class="d-flex justify-content-start" style="flex: 1;">
+            <div class="hstack">
+              <button class="btn btn-link">
+                <i class="bi bi-skip-backward-fill"></i>
+              </button>
+              <button class="btn btn-link">
+                <i class="bi bi-play-fill"></i>
+              </button>
+              <button class="btn btn-link">
+                <i class="bi bi-skip-forward-fill"></i>
+              </button>
+            </div>
           </div>
-          <div class="flex-fill text-center mx-3">
+          <div class="text-center px-2" style="flex: 1;">
             Track title <span class="text-white-50">by</span> Alk
             <div class="progress mt-2" role="progressbar" style="height: 2px">
               <div class="progress-bar" style="width: 25%"></div>
             </div>
           </div>
-          <div class="hstack gap-1">
-            <button class="btn btn-link" type="button" data-bs-toggle="offcanvas" data-bs-target="#bottomOffcanvas">
-              <i class="bi bi-music-note-list"></i>
-              <i class="bi bi-caret-up-fill"></i>
-            </button>
+          <div class="d-flex justify-content-end" style="flex: 1;">
+            <div class="hstack gap-1">
+              <button class="btn btn-link" type="button" data-bs-toggle="offcanvas" data-bs-target="#bottomOffcanvas">
+                <i class="bi bi-music-note-list"></i>
+                <i class="bi bi-caret-up-fill"></i>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -96,11 +100,14 @@
 
     <div class="modal fade about-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
+        <div class="modal-content bg-black">
           <div class="modal-header border-0">
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" class="btn text-white" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x-lg"></i></button>
           </div>
           <div class="modal-body">
+            <div class="marquee">
+              <div class="sine-scroller"></div>
+            </div>
           </div>
         </div>
       </div>
