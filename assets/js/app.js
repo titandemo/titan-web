@@ -25,7 +25,7 @@ $(document).ready(function() {
           .done(function(modules) {
             var $list = $('#module-list').empty();
             $.each(modules, function(i, name) {
-              $list.append('<li class="list-group-item">' + name + '</li>');
+              $list.append('<li class="text-white-50">' + name + '</li>');
             });
           });
 
