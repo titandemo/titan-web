@@ -1,3 +1,12 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  background: url('../img/od1.png') no-repeat center;
+  background-size: cover;
+}
+
 /* Ensure the transition on the navbar matches Bootstrap's 0.3s offcanvas slide */
 .fixed-bottom-shift {
   transition: transform 0.3s ease-in-out;
