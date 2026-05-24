@@ -125,48 +125,16 @@ function togglePlay() {
 }
 
 $(document).ready(function() {
-  $.get('data.yaml')
-    .done(function(yamlText) {
-      try {
-        const data = jsyaml.load(yamlText);
+  var scrollerText = $('.sine-scroller').data('text');
+  if (scrollerText) {
+    $('.sine-scroller').html(buildScroller('       ' + scrollerText));
+  }
 
-        if (data.title) {
-          $('#page-title').text(data.title);
-        }
-
-        if (data.scroller) {
-          var html = buildScroller('       ' + data.scroller);
-          $('.sine-scroller').html(html);
-        }
-
-        $.getJSON('assets/modules/index.json')
-          .done(function(modules) {
-            moduleList = modules;
-            var $list = $('#module-list').empty();
-            $.each(modules, function(i, name) {
-              var $a = $('<a href="#"></a>')
-                .addClass('module-link')
-                .text(name)
-                .data('module', name);
-              $list.append($('<li></li>').append($a));
-            });
-            tryStartPlayback();
-          });
-
-        const $news = $('#news');
-        $news.empty();
-
-        $.each(data.news, function(index, thing) {
-            $news.append('<li class="list-group-item border-0 ps-0">' + thing + '</li>');
-        });
-
-      } catch (error) {
-          console.error("YAML parsing error:", error);
-      }
-    })
-    .fail(function(jqXHR, textStatus, errorThrown) {
-      console.error("Failed to load file:", textStatus, errorThrown);
-    });
+  moduleList = [];
+  $('.module-link').each(function() {
+    moduleList.push($(this).data('module'));
+  });
+  tryStartPlayback();
 
   initChiptune();
 
