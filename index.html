@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title></title>
+    <title id="page-title"></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="assets/css/stylesheet.css">
@@ -29,21 +29,21 @@
 
         <div class="d-none d-lg-flex w-100 align-items-center position-relative">
           <div class="d-flex flex-column py-1" style="width:320px;">
-            <div class="small text-center text-white-50 lh-1 pb-1">Track title</div>
+            <div class="small text-center text-white-50 lh-1 pb-1"><span id="track-title-desktop">Track title</span></div>
             <div class="d-flex align-items-center gap-2">
               <div class="hstack gap-1">
-                <button class="btn btn-link nav-link py-0 px-1 fs-6 lh-1">
+                <button id="btn-prev" class="btn btn-link nav-link py-0 px-1 fs-6 lh-1">
                   <i class="bi bi-skip-backward-fill"></i>
                 </button>
-                <button class="btn btn-link nav-link py-0 px-1 fs-6 lh-1">
+                <button id="btn-play" class="btn btn-link nav-link py-0 px-1 fs-6 lh-1">
                   <i class="bi bi-play-fill"></i>
                 </button>
-                <button class="btn btn-link nav-link py-0 px-1 fs-6 lh-1">
+                <button id="btn-next" class="btn btn-link nav-link py-0 px-1 fs-6 lh-1">
                   <i class="bi bi-skip-forward-fill"></i>
                 </button>
               </div>
-              <div class="progress flex-fill" role="progressbar" style="height:4px;">
-                <div class="progress-bar" style="width:25%"></div>
+              <div id="progress-container" class="progress flex-fill" role="progressbar" style="height:4px;">
+                <div class="progress-bar player-progress-bar" style="width:0%"></div>
               </div>
               <button class="btn btn-link nav-link py-0 px-1 fs-6 lh-1" type="button" data-bs-toggle="collapse" data-bs-target="#moduleCollapse" aria-controls="moduleCollapse" aria-expanded="false">
                 <i class="bi bi-music-note-list"></i>
@@ -65,21 +65,21 @@
     </nav>
     <div class="d-lg-none bg-dark pt-1 pb-2 border-top border-secondary">
       <div class="container">
-        <div class="small text-center text-white-50 pb-1">Track title</div>
+        <div class="small text-center text-white-50 pb-1"><span id="track-title-mobile">Track title</span></div>
         <div class="d-flex align-items-center gap-2">
           <div class="hstack gap-1">
-            <button class="btn btn-link nav-link py-0 px-1 fs-6 lh-1">
+            <button class="btn btn-link nav-link py-0 px-1 fs-6 lh-1 btn-prev">
               <i class="bi bi-skip-backward-fill"></i>
             </button>
-            <button class="btn btn-link nav-link py-0 px-1 fs-6 lh-1">
+            <button class="btn btn-link nav-link py-0 px-1 fs-6 lh-1 btn-play">
               <i class="bi bi-play-fill"></i>
             </button>
-            <button class="btn btn-link nav-link py-0 px-1 fs-6 lh-1">
+            <button class="btn btn-link nav-link py-0 px-1 fs-6 lh-1 btn-next">
               <i class="bi bi-skip-forward-fill"></i>
             </button>
           </div>
           <div class="progress flex-fill" role="progressbar" style="height: 2px;">
-            <div class="progress-bar" style="width: 25%"></div>
+            <div class="progress-bar player-progress-bar" style="width: 0%"></div>
           </div>
           <button class="btn btn-link nav-link py-0 px-1 fs-6 lh-1" type="button" data-bs-toggle="collapse" data-bs-target="#moduleCollapse" aria-controls="moduleCollapse" aria-expanded="false">
             <i class="bi bi-music-note-list"></i>

@@ -7,6 +7,24 @@ html, body {
   overflow-y: auto;
 }
 
+.module-link {
+  display: block;
+  padding: 0.125rem 0.5rem;
+  color: rgba(255,255,255,.5);
+  text-decoration: none;
+  border-radius: 0.25rem;
+}
+
+.module-link:hover {
+  color: #fff;
+  background: rgba(255,255,255,.1);
+}
+
+.module-link.active {
+  color: #fff;
+  background: rgba(255,255,255,.15);
+}
+
 body {
   background: url('../img/od1.png') no-repeat center;
   background-size: cover;
