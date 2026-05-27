@@ -21,181 +21,158 @@ title: Titandemo
       </div>
     </div>
     <div class="d-none d-sm-block container-fluid">
-      <div id="fTelnetContainer">&nbsp;</div>
-    <div class="collapse" id="moduleCollapse" data-bs-theme="dark">
-      <div class="bg-dark p-4">
-        <ul id="module-list" class="list-unstyled mb-0">
-{% assign module_files = site.static_files | where_exp: 'f', 'f.extname == ".xm" or f.extname == ".mod" or f.extname == ".it"' | sort: 'name' %}
-{% for file in module_files %}
-          <li><a href="#" class="module-link" data-module="{{ file.name }}">{{ file.name }}</a></li>
-{% endfor %}
-        </ul>
-      </div>
-    </div>
-    <nav class="navbar navbar-dark bg-dark">
-      <div class="container flex-wrap">
-        <div class="d-flex align-items-center w-100 d-lg-none">
-          <div style="flex:1"></div>
-          <a class="navbar-brand mx-0" href="#">
-            <img src="assets/img/logo.svg" alt="{{ site.data.site.title }} Logo" height="30">
-          </a>
-          <ul class="navbar-nav flex-row" style="flex:1">
-            <li class="nav-item ms-auto">
-              <button type="button" class="nav-link" data-bs-toggle="modal" data-bs-target=".about-modal">About</button>
-            </li>
+      <div class="collapse" id="moduleCollapse" data-bs-theme="dark">
+        <div class="bg-dark p-4">
+          <ul id="module-list" class="list-unstyled mb-0">
+  {% assign module_files = site.static_files | where_exp: 'f', 'f.extname == ".xm" or f.extname == ".mod" or f.extname == ".it"' | sort: 'name' %}
+  {% for file in module_files %}
+            <li><a href="#" class="module-link" data-module="{{ file.name }}">{{ file.name }}</a></li>
+  {% endfor %}
           </ul>
         </div>
+      </div>
+      <nav class="navbar navbar-dark bg-dark">
+        <div class="container flex-wrap">
+          <div class="d-flex align-items-center w-100 d-lg-none">
+            <div style="flex:1"></div>
+            <a class="navbar-brand mx-0" href="#">
+              <img src="assets/img/logo.svg" alt="{{ site.data.site.title }} Logo" height="30">
+            </a>
+            <ul class="navbar-nav flex-row" style="flex:1">
+              <li class="nav-item ms-auto">
+                <button type="button" class="nav-link" data-bs-toggle="modal" data-bs-target=".about-modal">About</button>
+              </li>
+            </ul>
+          </div>
 
-        <div class="d-none d-lg-flex w-100 align-items-center position-relative">
-          <div class="d-flex flex-column py-1" style="width:320px;">
-            <div class="small text-center text-white-50 lh-1 pb-1"><span id="track-title-desktop"></span></div>
-            <div class="d-flex align-items-center gap-2">
-              <div class="hstack gap-1">
-                <button id="btn-prev" class="btn btn-link nav-link py-0 px-1 fs-6 lh-1">
-                  <i class="bi bi-skip-backward-fill"></i>
-                </button>
-                <button id="btn-play" class="btn btn-link nav-link py-0 px-1 fs-6 lh-1">
-                  <i class="bi bi-play-fill"></i>
-                </button>
-                <button id="btn-next" class="btn btn-link nav-link py-0 px-1 fs-6 lh-1">
-                  <i class="bi bi-skip-forward-fill"></i>
+          <div class="d-none d-lg-flex w-100 align-items-center position-relative">
+            <div class="d-flex flex-column py-1" style="width:320px;">
+              <div class="small text-center text-white-50 lh-1 pb-1"><span id="track-title-desktop"></span></div>
+              <div class="d-flex align-items-center gap-2">
+                <div class="hstack gap-1">
+                  <button id="btn-prev" class="btn btn-link nav-link py-0 px-1 fs-6 lh-1">
+                    <i class="bi bi-skip-backward-fill"></i>
+                  </button>
+                  <button id="btn-play" class="btn btn-link nav-link py-0 px-1 fs-6 lh-1">
+                    <i class="bi bi-play-fill"></i>
+                  </button>
+                  <button id="btn-next" class="btn btn-link nav-link py-0 px-1 fs-6 lh-1">
+                    <i class="bi bi-skip-forward-fill"></i>
+                  </button>
+                </div>
+                <div id="progress-container" class="progress flex-fill" role="progressbar" style="height:4px;">
+                  <div class="progress-bar player-progress-bar" style="width:0%"></div>
+                </div>
+                <button class="btn btn-link nav-link py-0 px-1 fs-6 lh-1" type="button" data-bs-toggle="collapse" data-bs-target="#moduleCollapse" aria-controls="moduleCollapse" aria-expanded="false">
+                  <i class="bi bi-music-note-list"></i>
                 </button>
               </div>
-              <div id="progress-container" class="progress flex-fill" role="progressbar" style="height:4px;">
-                <div class="progress-bar player-progress-bar" style="width:0%"></div>
-              </div>
-              <button class="btn btn-link nav-link py-0 px-1 fs-6 lh-1" type="button" data-bs-toggle="collapse" data-bs-target="#moduleCollapse" aria-controls="moduleCollapse" aria-expanded="false">
-                <i class="bi bi-music-note-list"></i>
+            </div>
+
+            <a class="navbar-brand position-absolute start-50 translate-middle-x" href="#">
+              <img src="assets/img/logo.svg" alt="Logo" height="30">
+            </a>
+
+            <ul class="navbar-nav flex-row ms-auto">
+              <li class="nav-item">
+                <button type="button" class="nav-link" data-bs-toggle="modal" data-bs-target=".about-modal">About</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="container">
+        <div id="fTelnetContainer">&nbsp;</div>
+      </div>
+      <div class="d-lg-none bg-dark pt-1 pb-2 border-top border-secondary">
+        <div class="container">
+          <div class="small text-center text-white-50 pb-1"><span id="track-title-mobile">Track title</span></div>
+          <div class="d-flex align-items-center gap-2">
+            <div class="hstack gap-1">
+              <button class="btn btn-link nav-link py-0 px-1 fs-6 lh-1 btn-prev">
+                <i class="bi bi-skip-backward-fill"></i>
+              </button>
+              <button class="btn btn-link nav-link py-0 px-1 fs-6 lh-1 btn-play">
+                <i class="bi bi-play-fill"></i>
+              </button>
+              <button class="btn btn-link nav-link py-0 px-1 fs-6 lh-1 btn-next">
+                <i class="bi bi-skip-forward-fill"></i>
               </button>
             </div>
+            <div class="progress flex-fill" role="progressbar" style="height: 2px;">
+              <div class="progress-bar player-progress-bar" style="width: 0%"></div>
+            </div>
+            <button class="btn btn-link nav-link py-0 px-1 fs-6 lh-1" type="button" data-bs-toggle="collapse" data-bs-target="#moduleCollapse" aria-controls="moduleCollapse" aria-expanded="false">
+              <i class="bi bi-music-note-list"></i>
+            </button>
           </div>
-
-          <a class="navbar-brand position-absolute start-50 translate-middle-x" href="#">
-            <img src="assets/img/logo.svg" alt="Logo" height="30">
-          </a>
-
-          <ul class="navbar-nav flex-row ms-auto">
-            <li class="nav-item">
-              <button type="button" class="nav-link" data-bs-toggle="modal" data-bs-target=".about-modal">About</button>
-            </li>
-          </ul>
         </div>
       </div>
-    </nav>
-    <div class="d-lg-none bg-dark pt-1 pb-2 border-top border-secondary">
-      <div class="container">
-        <div class="small text-center text-white-50 pb-1"><span id="track-title-mobile">Track title</span></div>
-        <div class="d-flex align-items-center gap-2">
-          <div class="hstack gap-1">
-            <button class="btn btn-link nav-link py-0 px-1 fs-6 lh-1 btn-prev">
-              <i class="bi bi-skip-backward-fill"></i>
-            </button>
-            <button class="btn btn-link nav-link py-0 px-1 fs-6 lh-1 btn-play">
-              <i class="bi bi-play-fill"></i>
-            </button>
-            <button class="btn btn-link nav-link py-0 px-1 fs-6 lh-1 btn-next">
-              <i class="bi bi-skip-forward-fill"></i>
-            </button>
-          </div>
-          <div class="progress flex-fill" role="progressbar" style="height: 2px;">
-            <div class="progress-bar player-progress-bar" style="width: 0%"></div>
-          </div>
-          <button class="btn btn-link nav-link py-0 px-1 fs-6 lh-1" type="button" data-bs-toggle="collapse" data-bs-target="#moduleCollapse" aria-controls="moduleCollapse" aria-expanded="false">
-            <i class="bi bi-music-note-list"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-    <div class="container">
-      <div id="fTelnetContainer">&nbsp;</div>
-    </div>
-
-    <!-- <section class="container py-3 text-white"> -->
-    <!--   <div class="row"> -->
-    <!--     <div class="col-md-8"> -->
-    <!--       <div class="bg-dark rounded-3 p-2 bg-opacity-50 ftelnet"> -->
-    <!--         <div id="fTelnetContainer">&nbsp;</div> -->
-    <!--       </div> -->
-    <!--     </div> -->
-    <!--     <div class="col-md-4"> -->
-    <!--       <div class="rounded-2 bg-dark bg-opacity-50"> -->
-    <!--         <h2 class="bg-opacity-50 p-3">News</h2> -->
-    <!--         <ul id="news" class="p-2 list-unstyled text-center"> -->
-    <!--           {% for item in site.data.site.news %} -->
-    <!--             <li class="list-group-item border-0 ps-0">{{ item }}</li> -->
-    <!--           {% endfor %} -->
-    <!--         </ul> -->
-    <!--       </div> -->
-    <!--     </div> -->
-    <!--   </div> -->
-    <!-- </section> -->
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-4.0.0.js"></script>
-    <script src="assets/js/app.js"></script>
-    <script src="//embed-v2.ftelnet.ca/js/ftelnet-loader.norip.xfer.js"></script>
-    <script>
-var Options = new fTelnetOptions();
-Options.ScreenColumns = 160;
-Options.ScreenRows = 30;
-Options.ConnectionType = 'telnet';
-Options.Emulation = 'ansi-bbs';
-Options.Font = 'CP437';
-Options.ForceWss = false;
-Options.AllowModernScrollback = false;
-Options.BareLFtoCRLF = false;
-Options.BitsPerSecond = 57600;
-Options.Enter = '\r';
-Options.Hostname = 'bbs.ftelnet.ca';
-Options.LocalEcho = false;
-Options.NegotiateLocalEcho = true;
-Options.Port = window.location.protocol === 'https:' ? 11235 : 1123;
-Options.SendLocation = true;
-window.localStorage.removeItem('ScreenColumns');
-window.localStorage.removeItem('ScreenRows');
-new fTelnetClient('fTelnetContainer', Options);
-
-(function() {
-  var ftelnet = document.querySelector('.ftelnet');
-  if (!ftelnet) return;
-  function fit() {
-    var canvas = ftelnet.querySelector('canvas');
-    if (!canvas || !canvas.width) return;
-    var term = ftelnet.querySelector('#fTelnetContainer');
-    var client = ftelnet.querySelector('.fTelnetClientContainer');
-    if (!term || !client) return;
-    var scale = ftelnet.clientWidth / canvas.width;
-    if (scale < 1) {
-      client.style.transformOrigin = 'left top';
-      client.style.transform = 'scale(' + scale + ')';
-    } else {
-      client.style.transform = '';
-    }
-  }
-  var iv = setInterval(function() {
-    var canvas = ftelnet.querySelector('canvas');
-    if (canvas && canvas.width > 0) { fit(); clearInterval(iv); }
-  }, 200);
-  window.addEventListener('resize', fit);
-})();
-    </script>
-
-    <div class="modal fade about-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content bg-black">
-          <div class="modal-header border-0">
-            <div class="marquee">
-              <div class="sine-scroller" data-text="{{ site.data.site.scroller }}"></div>
+      <div class="modal fade about-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content bg-black">
+            <div class="modal-header border-0">
+              <div class="marquee">
+                <div class="sine-scroller" data-text="{{ site.data.site.scroller }}"></div>
+              </div>
+            </div>
+            <div class="modal-body">
+              <p>Born in 2004, Titan is an art collective with members all around the globe. We've been doing a lot of things in different art disciplines. Computer executables, Pixel Graphics, Music, Graffiti, and much more.</p>
+              <h5>Honorable Titans (ex-members)</h5>
+              <p>aka-l0, las, Thenikon, Blueflame, barium, eleric, raziir, unseen fate, beef, zlorfik, viruz666, dbrn, 2late, 2EA3, jallabert, moh, ogge, idiana, meat, bull, I8U, Hobbit, Nap, Yogin, psypuls,crcx, funkyfish, saberoth, vouck, tristan, vils, deathr0w, feraillus, spotter, kryps, gkmotu, dionysos, algar, xerxes, lafarge, whoopee, auld, ipe, kmuland, saida, crype, stv, moonlord, vigo, shazz, mczonk, 71M, pailes, snkorea, dr3amz, dot, rebb, kenet, drskull, deathstar, nebulah, brainbox, frank2, myr, strager, vigo, rouquemoute, ampli, pest, seffren, setrodox, saxxonpike, crazyQ, quasimodo, creature of hell, ruderudy, premium, doc jones, nystep, 4play, int3rpol, madmax, michu, zyps, imerso, sik, psidum, fizzer, porocyon, dstar, pikzel, staud, pixelshade, kravilion, molive, sparrow</p>
             </div>
           </div>
-          <div class="modal-body">
-            <p>Born in 2004, Titan is an art collective with members all around the globe. We've been doing a lot of things in different art disciplines. Computer executables, Pixel Graphics, Music, Graffiti, and much more.</p>
-            <h5>Honorable Titans (ex-members)</h5>
-            <p>aka-l0, las, Thenikon, Blueflame, barium, eleric, raziir, unseen fate, beef, zlorfik, viruz666, dbrn, 2late, 2EA3, jallabert, moh, ogge, idiana, meat, bull, I8U, Hobbit, Nap, Yogin, psypuls,crcx, funkyfish, saberoth, vouck, tristan, vils, deathr0w, feraillus, spotter, kryps, gkmotu, dionysos, algar, xerxes, lafarge, whoopee, auld, ipe, kmuland, saida, crype, stv, moonlord, vigo, shazz, mczonk, 71M, pailes, snkorea, dr3amz, dot, rebb, kenet, drskull, deathstar, nebulah, brainbox, frank2, myr, strager, vigo, rouquemoute, ampli, pest, seffren, setrodox, saxxonpike, crazyQ, quasimodo, creature of hell, ruderudy, premium, doc jones, nystep, 4play, int3rpol, madmax, michu, zyps, imerso, sik, psidum, fizzer, porocyon, dstar, pikzel, staud, pixelshade, kravilion, molive, sparrow</p>
-          </div>
         </div>
       </div>
-    </div>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+      <script src="https://code.jquery.com/jquery-4.0.0.js"></script>
+      <script src="assets/js/app.js"></script>
+      <script src="//embed-v2.ftelnet.ca/js/ftelnet-loader.norip.xfer.js"></script>
+      <script>
+        var Options = new fTelnetOptions();
+        Options.ScreenColumns = 160;
+        Options.ScreenRows = 30;
+        Options.ConnectionType = 'telnet';
+        Options.Emulation = 'ansi-bbs';
+        Options.Font = 'CP437';
+        Options.ForceWss = false;
+        Options.AllowModernScrollback = false;
+        Options.BareLFtoCRLF = false;
+        Options.BitsPerSecond = 57600;
+        Options.Enter = '\r';
+        Options.Hostname = 'bbs.ftelnet.ca';
+        Options.LocalEcho = false;
+        Options.NegotiateLocalEcho = true;
+        Options.Port = window.location.protocol === 'https:' ? 11235 : 1123;
+        Options.SendLocation = true;
+        window.localStorage.removeItem('ScreenColumns');
+        window.localStorage.removeItem('ScreenRows');
+        new fTelnetClient('fTelnetContainer', Options);
+
+        (function() {
+          var ftelnet = document.querySelector('.ftelnet');
+          if (!ftelnet) return;
+          function fit() {
+            var canvas = ftelnet.querySelector('canvas');
+            if (!canvas || !canvas.width) return;
+            var term = ftelnet.querySelector('#fTelnetContainer');
+            var client = ftelnet.querySelector('.fTelnetClientContainer');
+            if (!term || !client) return;
+            var scale = ftelnet.clientWidth / canvas.width;
+            if (scale < 1) {
+              client.style.transformOrigin = 'left top';
+              client.style.transform = 'scale(' + scale + ')';
+            } else {
+              client.style.transform = '';
+            }
+          }
+          var iv = setInterval(function() {
+            var canvas = ftelnet.querySelector('canvas');
+            if (canvas && canvas.width > 0) { fit(); clearInterval(iv); }
+          }, 200);
+          window.addEventListener('resize', fit);
+        })();
+      </script>
     </div>
   </body>
 </html>
