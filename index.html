@@ -11,6 +11,17 @@ title: Titandemo
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="assets/css/stylesheet.css">
   </head>
+  <body>
+    <div class="d-block d-sm-none rotate-device">
+      <div class="d-flex align-items-center justify-content-center vh-100">
+        <div class="text-center text-white px-3">
+          <i class="bi bi-phone-landscape fs-1 d-block mb-3"></i>
+          <p class="fs-5">Please rotate your device to landscape</p>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-sm-block container-fluid">
+      <div id="fTelnetContainer">&nbsp;</div>
     <div class="collapse" id="moduleCollapse" data-bs-theme="dark">
       <div class="bg-dark p-4">
         <ul id="module-list" class="list-unstyled mb-0">
@@ -37,7 +48,7 @@ title: Titandemo
 
         <div class="d-none d-lg-flex w-100 align-items-center position-relative">
           <div class="d-flex flex-column py-1" style="width:320px;">
-            <div class="small text-center text-white-50 lh-1 pb-1"><span id="track-title-desktop">Track title</span></div>
+            <div class="small text-center text-white-50 lh-1 pb-1"><span id="track-title-desktop"></span></div>
             <div class="d-flex align-items-center gap-2">
               <div class="hstack gap-1">
                 <button id="btn-prev" class="btn btn-link nav-link py-0 px-1 fs-6 lh-1">
@@ -95,27 +106,79 @@ title: Titandemo
         </div>
       </div>
     </div>
-    <section class="container py-3 text-white">
-      <div class="row">
-        <div class="col-md-8">
-          <div class="bg-dark rounded-3 p-2 bg-opacity-50"></div>
-        </div>
-        <div class="col-md-4">
-          <div class="rounded-2 bg-dark bg-opacity-50">
-            <h2 class="bg-opacity-50 p-3">News</h2>
-            <ul id="news" class="p-2 list-unstyled">
-              {% for item in site.data.site.news %}
-                <li class="list-group-item border-0 ps-0">* {{ item }}</li>
-              {% endfor %}
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
+    <div class="container">
+      <div id="fTelnetContainer">&nbsp;</div>
+    </div>
+
+    <!-- <section class="container py-3 text-white"> -->
+    <!--   <div class="row"> -->
+    <!--     <div class="col-md-8"> -->
+    <!--       <div class="bg-dark rounded-3 p-2 bg-opacity-50 ftelnet"> -->
+    <!--         <div id="fTelnetContainer">&nbsp;</div> -->
+    <!--       </div> -->
+    <!--     </div> -->
+    <!--     <div class="col-md-4"> -->
+    <!--       <div class="rounded-2 bg-dark bg-opacity-50"> -->
+    <!--         <h2 class="bg-opacity-50 p-3">News</h2> -->
+    <!--         <ul id="news" class="p-2 list-unstyled text-center"> -->
+    <!--           {% for item in site.data.site.news %} -->
+    <!--             <li class="list-group-item border-0 ps-0">{{ item }}</li> -->
+    <!--           {% endfor %} -->
+    <!--         </ul> -->
+    <!--       </div> -->
+    <!--     </div> -->
+    <!--   </div> -->
+    <!-- </section> -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-4.0.0.js"></script>
     <script src="assets/js/app.js"></script>
+    <script src="//embed-v2.ftelnet.ca/js/ftelnet-loader.norip.xfer.js"></script>
+    <script>
+var Options = new fTelnetOptions();
+Options.ScreenColumns = 160;
+Options.ScreenRows = 30;
+Options.ConnectionType = 'telnet';
+Options.Emulation = 'ansi-bbs';
+Options.Font = 'CP437';
+Options.ForceWss = false;
+Options.AllowModernScrollback = false;
+Options.BareLFtoCRLF = false;
+Options.BitsPerSecond = 57600;
+Options.Enter = '\r';
+Options.Hostname = 'bbs.ftelnet.ca';
+Options.LocalEcho = false;
+Options.NegotiateLocalEcho = true;
+Options.Port = window.location.protocol === 'https:' ? 11235 : 1123;
+Options.SendLocation = true;
+window.localStorage.removeItem('ScreenColumns');
+window.localStorage.removeItem('ScreenRows');
+new fTelnetClient('fTelnetContainer', Options);
+
+(function() {
+  var ftelnet = document.querySelector('.ftelnet');
+  if (!ftelnet) return;
+  function fit() {
+    var canvas = ftelnet.querySelector('canvas');
+    if (!canvas || !canvas.width) return;
+    var term = ftelnet.querySelector('#fTelnetContainer');
+    var client = ftelnet.querySelector('.fTelnetClientContainer');
+    if (!term || !client) return;
+    var scale = ftelnet.clientWidth / canvas.width;
+    if (scale < 1) {
+      client.style.transformOrigin = 'left top';
+      client.style.transform = 'scale(' + scale + ')';
+    } else {
+      client.style.transform = '';
+    }
+  }
+  var iv = setInterval(function() {
+    var canvas = ftelnet.querySelector('canvas');
+    if (canvas && canvas.width > 0) { fit(); clearInterval(iv); }
+  }, 200);
+  window.addEventListener('resize', fit);
+})();
+    </script>
 
     <div class="modal fade about-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -132,6 +195,7 @@ title: Titandemo
           </div>
         </div>
       </div>
+    </div>
     </div>
   </body>
 </html>
